@@ -1,8 +1,8 @@
 package defines.ECMA_48;
 
 /**
- * ECMA-48 SGR (8.3.99) Select Graphic Rendition codes - Complete set
- * @see <a href="https://ecma-international.org/wp-content/uploads/ECMA-48_5th_edition_june_1991.pdf">ECMA-48 §8.3.99</a>
+ * ECMA-48 SGR (8.3.117) Select Graphic Rendition codes - Complete set
+ * @see <a href="https://ecma-international.org/wp-content/uploads/ECMA-48_5th_edition_june_1991.pdf">ECMA-48 SGR §8.3.117</a>
  *
  */
 public final class ECMA_SGR_codes
