@@ -1,4 +1,4 @@
-package defines.ECMA_48;
+package lib_ekrebs.defines.ECMA_48;
 
 /**
  * ECMA-48 Cursor Control Functions (8.2.7)
@@ -11,14 +11,10 @@ public final class ECMA_Cursor_codes
 
     // ===== POSITION ABSOLUE =====
     /** Cursor Position (CUP) CSI Ps ; Ps H */
-    public static String CUP(int row, int col) {
-        return CSI + row + ";" + col + "H";
-    }
+    public static String CUP(int row, int col) { return CSI + row + ";" + col + "H"; }
     
     /** Cursor to (row,col) - 1-based */
-    public static String TO(int row, int col) {
-        return CSI + row + ";" + col + "H";
-    }
+    public static String TO(int row, int col) { return CSI + row + ";" + col + "H"; }
 
     // ===== MOUVEMENTS RELATIFS =====
     /** Cursor Up Pn rows (CUU) */

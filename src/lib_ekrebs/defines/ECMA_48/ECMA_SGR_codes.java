@@ -1,4 +1,4 @@
-package defines.ECMA_48;
+package lib_ekrebs.defines.ECMA_48;
 
 /**
  * ECMA-48 SGR (8.3.117) Select Graphic Rendition codes - Complete set
@@ -8,7 +8,7 @@ package defines.ECMA_48;
 public final class ECMA_SGR_codes
 {
     private static final String CSI   = "\u001B[";
-    private static final String FINAL = "\u006Dm";
+    private static final String FINAL = "\u006D";
 
     // ===== RESET =====
     public static final String RESET  = CSI + "0"  + FINAL;
@@ -95,14 +95,14 @@ public final class ECMA_SGR_codes
     public static final String OVERLINE_OFF    = CSI + "55" + FINAL;
 
     // ===== RGB 24-bit (xterm-256 extension) =====
-    public static String FG_RGB(int r, int g, int b)
+    public static String RGB(int r, int g, int b)
     {
-        return CSI + String.format("38;2;%d;%d;%d%s", r, g, b)  + FINAL;
+        return (CSI + String.format("38;2;%d;%d;%d", r, g, b)  + FINAL);
     }
 
     public static String BG_RGB(int r, int g, int b)
     {
-        return CSI + String.format("48;2;%d;%d;%d%s", r, g, b) + FINAL;
+        return (CSI + String.format("48;2;%d;%d;%d", r, g, b) + FINAL);
     }
 }
 
