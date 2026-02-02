@@ -104,5 +104,43 @@ public final class ECMA_SGR_codes
     {
         return (CSI + String.format("48;2;%d;%d;%d", r, g, b) + FINAL);
     }
+
+    // Extract the numeric part from existing constants like "31" from CSI + "31" + FINAL
+    public static String BG_FG(String background, String foreground)
+    {
+        String fgNum;
+        String bgNum;
+
+        fgNum = foreground.substring(CSI.length(), foreground.length() - FINAL.length());
+        bgNum = background.substring(CSI.length(), background.length() - FINAL.length());
+        return (CSI + fgNum + ";" + bgNum + FINAL);
+    }
+
+    // Extract the numeric part from existing constants like "31" from CSI + "31" + FINAL
+    public static String FG_BG(String foreground, String background)
+    {
+        String fgNum;
+        String bgNum;
+
+        fgNum = foreground.substring(CSI.length(), foreground.length() - FINAL.length());
+        bgNum = background.substring(CSI.length(), background.length() - FINAL.length());
+        return (CSI + fgNum + ";" + bgNum + FINAL);
+    }
+
+    public static String SGR_COMBINE(String... sgr_codes)
+    {
+        StringBuilder nums;
+        String num;
+
+        nums = new StringBuilder();
+        for (String code : sgr_codes)
+        {
+            num = code.substring(CSI.length(), code.length() - FINAL.length());
+            if (nums.length() > 0)
+                nums.append(";");
+            nums.append(num);
+        }
+        return CSI + nums + FINAL;
+    }
 }
 
