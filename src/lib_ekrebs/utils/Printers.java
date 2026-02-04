@@ -58,7 +58,7 @@ public class Printers
         {
             case WHITE      -> {return(BG_WHITE);   }
             case RED        -> {return(BG_RED);     }
-            case GREEN      -> {return(BG_RED);     }
+            case GREEN      -> {return(BG_GREEN);     }
             case BLUE       -> {return(BG_BLUE);    }
             case BLACK      -> {return(BG_BLACK);   }
             case YELLOW     -> {return(BG_YELLOW);  }
