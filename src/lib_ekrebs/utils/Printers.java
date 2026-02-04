@@ -31,6 +31,40 @@ public class Printers
         {
             result = result + ":";
         }
+        color = toBGColors(color);
         return ("\n─"+UNDERLINE+color+result+RESET);
+    }
+
+
+    public static void printMacaron(String str, String color)
+    {
+        System.out.println(toMacaron(str, color));
+    }
+
+    public static void printDone()
+    {
+        System.out.println(BOLD+GREEN+"[DONE]\n"+RESET);
+    }
+    
+    public static void printLine(String color)
+    {
+        color = toBGColors(color);
+        System.out.println(color+"\n"+RESET);
+    }
+
+    public static String toBGColors(String SGR_color)
+    {
+        switch (SGR_color)
+        {
+            case WHITE      -> {return(BG_WHITE);   }
+            case RED        -> {return(BG_RED);     }
+            case GREEN      -> {return(BG_RED);     }
+            case BLUE       -> {return(BG_BLUE);    }
+            case BLACK      -> {return(BG_BLACK);   }
+            case YELLOW     -> {return(BG_YELLOW);  }
+            case MAGENTA    -> {return(BG_MAGENTA); }
+            case CYAN       -> {return(BG_CYAN);    }
+            default         -> {return(BG_WHITE);   }
+        }
     }
 }
