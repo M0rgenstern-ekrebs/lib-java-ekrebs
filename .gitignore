@@ -1,6 +1,16 @@
 # Compiled class file
 *.class
 
+#ressource files (images, pngs, gifs...) (tar.gz them instead)
+*.png
+*.jpg
+*.gif
+*.webp
+*.PNG
+*.jpeg
+*.mp4
+*.mp3
+
 # Log file
 *.log
 

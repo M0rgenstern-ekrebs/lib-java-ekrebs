@@ -2,15 +2,16 @@
 # Creates lib-ek.jar and runs tests from tests/
 
 # Config
-LIB_NAME = lib_ekrebsv0.jar
+LIB_NAME = lib_ekrebsv0.3.jar
 OUT_DIR = out
 LIB_CLASSES_DIR = $(OUT_DIR)/lib-classes
 TEST_CLASSES_DIR = $(OUT_DIR)/test-classes
 SRC_DIR = src
 TEST_DIR = tests
+TEST_MAIN = $(TEST_DIR)/Main
 
 # Find all java sources recursively
-SOURCES = $(shell find $(SRC_DIR) -name "*.java")
+LIB_SOURCES = $(shell find $(SRC_DIR) -name "*.java")
 TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
 
 # colors
@@ -47,10 +48,10 @@ endef
 all: lib
 
 # Compile library sources to lib-classes/
-$(LIB_CLASSES_DIR)/%.class: $(SOURCES)
+$(LIB_CLASSES_DIR)/%.class: $(LIB_SOURCES)
 	@$(call print_info,"Compiling library Java sources...")
 	mkdir -p $(LIB_CLASSES_DIR)
-	javac -Xlint:all -Werror -d $(LIB_CLASSES_DIR) $(SOURCES)
+	javac -Xlint:all -Werror -d $(LIB_CLASSES_DIR) $(LIB_SOURCES)
 
 # Create library JAR from lib-classes/ only (strips out/ prefix)
 $(LIB_NAME): $(LIB_CLASSES_DIR)/%.class
@@ -70,9 +71,8 @@ liblist:
 test: lib
 	@$(call print_info,"Running the tests...")
 	mkdir -p $(TEST_CLASSES_DIR)
-	javac -cp "$(TEST_DIR):$(SRC_DIR):$(LIB_NAME):$(LIB_CLASSES_DIR)" \
-	      -d $(TEST_CLASSES_DIR) $(TEST_SOURCES)
-	java -cp "$(TEST_CLASSES_DIR):$(LIB_NAME):$(LIB_CLASSES_DIR)"
+	javac -cp "$(TEST_DIR):$(SRC_DIR):$(LIB_NAME):$(LIB_CLASSES_DIR)" -d $(TEST_CLASSES_DIR) $(TEST_SOURCES)
+	java -cp "$(OUT_DIR):$(OUT_DIR)/test-classes:$(OUT_DIR)/lib-classes" $(TEST_MAIN)
 
 # Clean everything
 clean:
