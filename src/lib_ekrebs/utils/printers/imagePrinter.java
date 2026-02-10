@@ -76,17 +76,23 @@ public class imagePrinter
 			for (int x = 0; x < buffered_image.getWidth(); x++)
 			{
 				rgb0 = buffered_image.getRGB(x, y);
-				rgb1 = buffered_image.getRGB(x, y+1);
+				r0 = (rgb0 >> 16) & 0xFF;
+				g0 = (rgb0 >> 8) & 0xFF;
+				b0 = rgb0 & 0xFF;
+				if (y+1 < buffered_image.getHeight())
+				{
+					rgb1 = buffered_image.getRGB(x, y+1);
 					r1 = (rgb1 >> 16) & 0xFF;
 					g1 = (rgb1 >> 8) & 0xFF;
 					b1 = rgb1 & 0xFF;
-
-					r0 = (rgb0 >> 16) & 0xFF;
-					g0 = (rgb0 >> 8) & 0xFF;
-					b0 = rgb0 & 0xFF;
-					msg += SGR_COMBINE(RGB(r0, g0, b0), BG_RGB(r1, g1, b1))+"▀"+ RESET;
+					msg += SGR_COMBINE(RGB(r0, g0, b0), BG_RGB(r1, g1, b1))+"▀";
+				}
+				else
+				{
+					msg += RESET+RGB(r1, g1, b1)+"▀";
+				}
 			}
-			msg += "\n";
+			msg += RESET+"\n";
 		}
 		System.out.print(msg);
 	}
