@@ -2,7 +2,7 @@
 # Creates lib-ek.jar and runs tests from tests/
 
 # Config
-LIB_NAME = lib_ekrebsv0.3.jar
+LIB_NAME = lib_ekrebs.jar
 OUT_DIR = out
 LIB_CLASSES_DIR = $(OUT_DIR)/lib-classes
 TEST_CLASSES_DIR = $(OUT_DIR)/test-classes
