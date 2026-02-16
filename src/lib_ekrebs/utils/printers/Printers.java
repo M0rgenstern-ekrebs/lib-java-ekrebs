@@ -19,7 +19,7 @@ public class Printers
     public static String highlightFirstWords(String str, String bg_color)
     {
         bg_color = toBGColors(bg_color);
-        str.replaceAll("(\\n(?:\\│)?)(\\S+)", "$1" + bg_color + "$2" + RESET);
+        return (str.replaceAll("(\\n(?:\\│)?)(\\S+)", "$1" + bg_color + "$2" + RESET));
     }
 
     public static String toMacaron(String str, String color)
