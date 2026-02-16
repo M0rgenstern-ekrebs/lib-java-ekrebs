@@ -16,6 +16,12 @@ public class Printers
         return(str.replace("\n", "\n│").replace("│─", "┌─").replace("│\n┌", "│\n├")+"\n└");
     }
 
+    public static String highlightFirstWords(String str, String bg_color)
+    {
+        bg_color = toBGColors(bg_color);
+        str.replaceAll("(\\n(?:\\│)?)(\\S+)", "$1" + bg_color + "$2" + RESET);
+    }
+
     public static String toMacaron(String str, String color)
     {
         String result;
@@ -56,13 +62,21 @@ public class Printers
     {
         switch (SGR_color)
         {
+            case BG_WHITE   -> {return(BG_WHITE);   }
             case WHITE      -> {return(BG_WHITE);   }
+            case BG_RED     -> {return(BG_RED);     }
             case RED        -> {return(BG_RED);     }
-            case GREEN      -> {return(BG_GREEN);     }
+            case BG_GREEN   -> {return(BG_GREEN);   }
+            case GREEN      -> {return(BG_GREEN);   }
+            case BG_BLUE    -> {return(BG_BLUE);    }
             case BLUE       -> {return(BG_BLUE);    }
+            case BG_BLACK   -> {return(BG_BLACK);   }
             case BLACK      -> {return(BG_BLACK);   }
+            case BG_YELLOW  -> {return(BG_YELLOW);  }
             case YELLOW     -> {return(BG_YELLOW);  }
+            case BG_MAGENTA -> {return(BG_MAGENTA); }
             case MAGENTA    -> {return(BG_MAGENTA); }
+            case BG_CYAN    -> {return(BG_CYAN);    }
             case CYAN       -> {return(BG_CYAN);    }
             default         -> {return(BG_WHITE);   }
         }
